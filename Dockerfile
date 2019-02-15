@@ -31,7 +31,8 @@ RUN tar -zxvf /tmp/php-${php_version}.tar.gz -C /tmp && cd /tmp/php-${php_versio
             --enable-ftp \
             --with-gettext \
             --disable-fileinfo \
-            --enable-maintainer-zts
+            --enable-maintainer-zts \
+            && make && make install
             
 RUN ln -sf /usr/local/php-${php_version}/bin/php /usr/local/bin/
 
