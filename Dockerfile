@@ -26,6 +26,7 @@ RUN tar -zxvf /tmp/php-${php_version}.tar.gz -C /tmp && cd /tmp/php-${php_versio
             --enable-sysvsem \
             --enable-inline-optimization \
             --with-curl \
+            --with-openssl \
             --enable-mbregex \
             --enable-mbstring \
             --enable-ftp \
