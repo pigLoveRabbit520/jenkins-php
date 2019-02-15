@@ -9,7 +9,7 @@ COPY php-${php_version}.tar.gz /tmp
 RUN apt-get install -y gcc g++ make openssl pkg-config libssl-dev  libcurl4-openssl-dev \
         libxml2 libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev
 
-RUN tar -zxvf /tmp/php-${php_version}.tar.gz && cd /tmp/php-${php_version} && ./configure \
+RUN tar -zxvf /tmp/php-${php_version}.tar.gz -C /tmp && cd /tmp/php-${php_version} && ./configure \
             --prefix=/usr/local/php-${php_version} \
             --with-config-file-path=/usr/local/php-${php_version}/etc \
             --with-mysqli \
