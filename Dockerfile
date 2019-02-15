@@ -7,12 +7,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 
 COPY php-${php_version}.tar.gz /tmp
 RUN apt-get install -y gcc g++ make openssl pkg-config libssl-dev  libcurl4-openssl-dev \
-        libxml2 libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev
+        libxml2 libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev default-libmysqlclient-dev
 
 RUN tar -zxvf /tmp/php-${php_version}.tar.gz -C /tmp && cd /tmp/php-${php_version} && ./configure \
             --prefix=/usr/local/php-${php_version} \
             --with-config-file-path=/usr/local/php-${php_version}/etc \
             --with-mysqli \
+            --with-pdo-mysql \
             --with-iconv-dir \
             --with-freetype-dir \
             --with-jpeg-dir \
@@ -26,10 +27,18 @@ RUN tar -zxvf /tmp/php-${php_version}.tar.gz -C /tmp && cd /tmp/php-${php_versio
             --enable-sysvsem \
             --enable-inline-optimization \
             --with-curl \
-            --with-openssl \
             --enable-mbregex \
             --enable-mbstring \
             --enable-ftp \
+            --with-gd \
+            --enable-gd-native-ttf \
+            --with-openssl \
+            --with-mhash \
+            --enable-pcntl \
+            --enable-sockets \
+            --enable-opcache \
+            --with-xmlrpc \
+            --enable-zip \
             --with-gettext \
             --disable-fileinfo \
             --enable-maintainer-zts \
