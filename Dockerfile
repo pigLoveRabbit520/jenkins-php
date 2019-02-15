@@ -32,6 +32,8 @@ RUN tar -zxvf /tmp/php-${php_version}.tar.gz -C /tmp && cd /tmp/php-${php_versio
             --with-gettext \
             --disable-fileinfo \
             --enable-maintainer-zts
+            
+RUN ln -sf /usr/local/php-${php_version}/bin/php /usr/local/bin/
 
 
 
